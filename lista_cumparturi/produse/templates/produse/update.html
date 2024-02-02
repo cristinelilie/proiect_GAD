@@ -1,0 +1,14 @@
+{% extends 'produse/base.html' %}
+
+
+{% block content %}
+<div class="center">
+<h1>Update Product</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ product.as_p }}
+    <button type="submit" class="btn btn-dark">Update</button>
+ </form>
+</div>
+{% endblock %}

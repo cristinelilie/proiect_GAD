@@ -1,0 +1,62 @@
+{% extends 'produse/base.html' %}
+{% block content %}
+
+<div class ="info-bar">
+  <div class="products">
+    <i class="fas fa-shopping-cart" value={{buy}}></i><sup>item{{buy|pluralize:"s"}} to buy</sup>
+    <span></span>
+  </div>
+  <div class="products">
+    <i class="fas fa-shopping-bag" value={{bought}}></i><sup>item{{bought|pluralize:"s"}} already bought</sup>
+    <span></span>
+  </div>
+</div>
+
+<hr />
+<h2>Enter the products here:</h2>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>PRODUCT</th>
+      <th>STATUS</th>
+      <th>Delete</th>
+      <th>Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if products %}
+      {%for product in products %}
+        {% if product.cumparat %}
+          <tr class="table-success">
+            <td class="linethrough">
+              <a href="{% url 'detail' product.id%}">{{product.product}} </a>
+            </td>
+            <td><a href="{% url 'change_status' product.id %}" id="undo">Undo</a></td>
+            <td><a href="{% url 'delete' product.id %} ">Delete</a></td>
+            <td><a href="{% url 'update' product.id %}">Update</a></td>
+          </tr>
+        {%else%}
+          <tr class="table-secondary">
+            <td>
+              <a href="{% url 'detail' product.id%}">{{product.product}} </a>
+            </td>
+            <td><a href="{% url 'change_status' product.id %}" id="done">Buy</a></td>
+            <td><a href="{% url 'delete' product.id %}">Delete</a></td>
+            <td><a href="{% url 'update' product.id %}">Update</a></td>
+          </tr>
+          {% endif %}
+      {% endfor %}
+    {% endif %}
+  </tbody>
+</table>
+<div class="form_add" >
+  <form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-dark">Submit</button>
+  </form>
+</div>
+{% endblock %}

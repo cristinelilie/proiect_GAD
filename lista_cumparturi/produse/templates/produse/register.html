@@ -1,0 +1,32 @@
+{% extends 'produse/base.html' %}
+
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <div class="center">
+        <h1>Register now!</h1>
+        <form method="POST" autocomplete="off">
+            {%csrf_token %}
+            <label>{{registerform.username.label}}</label>
+            {{registerform.username}}
+            <label>{{registerform.email.label}}</label>
+            {{registerform.email}}
+            <label>{{registerform.password1.label}}</label>
+            {{registerform.password1}}
+            <label>{{registerform.password2.label}}</label>
+            {{registerform.password2}}
+            <br><br>
+            <button type="submit" class="btn btn-dark">Register</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'my-login' %}">Login</a></p>
+    </div>
+</body>
+</html>
+
+{% endblock %}

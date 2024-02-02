@@ -1,0 +1,24 @@
+{% extends 'produse/base.html' %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="center">
+        <p class="detail">Product</p>
+        <h3>{{product.product}}</h3>
+        <p class="detail">Detail</p>
+        <h4>{{product.description}}</h4>
+    </div>
+    <hr>
+    <div class="back">
+            <a href ="{% url 'home' %}" >&#8592 Back</a>
+    </div>
+
+</body>
+</html>
+
+{% endblock %}

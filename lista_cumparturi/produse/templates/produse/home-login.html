@@ -1,0 +1,26 @@
+{% extends 'produse/base.html' %}
+
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <div class="center">
+        <h1>Login here!</h1>
+        <form method="POST" autocomplete="off">
+            {%csrf_token %}
+            {{loginform.as_p}}
+            <button type="submit" class="btn btn-dark">Login</button>
+        </form>
+        <p>Don't have an account?<a href="{% url 'register' %}">Register</a></p>
+    </div>
+</body>
+</html>
+
+
+
+{% endblock %}
